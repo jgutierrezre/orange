@@ -1,6 +1,6 @@
 # Orange
 
-Aplicación web para la asignatura Criptografía y Teoria de la Información. Hecho por Jorge Luis Castillo Orduz y Juan Pablo Gutiérrez Restrepo.
+Aplicación web para la asignatura Criptografía y Teoria de la Información. Hecho por Juan Pablo Gutiérrez Restrepo.
 
 ## How to use it
 
