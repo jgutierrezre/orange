@@ -1,0 +1,178 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Vigenère {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h1 class="m-b-10">Vigenère</h1>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item">Criptosistemas</a></li>
+                                <li class="breadcrumb-item">Clásicos</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">Vigenère</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <div class="col-sm-12">   
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase {% if 'primary' in tab %} active {% endif %}" id="cifrado-tab" data-toggle="tab" href="#cifrado" role="tab" aria-controls="cifrado" aria-selected="true">Cifrado</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase {% if 'criptoanalisis' in tab %} active {% endif %}" id="criptoanalisis-tab" data-toggle="tab" href="#criptoanalisis" role="tab" aria-controls="criptoanalisis" aria-selected="false">Criptoanálisis</a>
+                                </li>
+                                <!--
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase {% if 'ataque' in tab %} active {% endif %}" id="ataque-tab" data-toggle="tab" href="#ataque" role="tab" aria-controls="ataque" aria-selected="false">Ataque</a>
+                                </li>
+                                -->
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <!--  CIFRADO  -->
+                                <div class="tab-pane fade {% if 'primary' in tab %} show active {% endif %}" id="cifrado" role="tabpanel" aria-labelledby="cifrado-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Cifrado</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form action="/vigenere" method="post">
+                                                <div class="form-group" >
+                                                    <label for="texto_claro">Texto Claro</label>
+                                                    <input class="form-control" name="texto_claro" id="texto_claro" pattern="[A-Za-z]*" title="Solo letras, por favor." placeholder="Texto Claro" value={{ texto_claro }}></input>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <button type="submit" class="btn btn-primary" name="cifrar" value="Cifrar"><i class="feather icon-arrow-down"></i>Cifrar</button>
+                                                        <button type="submit" class="btn btn-secondary" name="descifrar" value="Descifrar"><i class="feather icon-arrow-up"></i>Descifrar</button>   
+                                                        <button type="submit" class="btn btn-outline-danger" name="limpiar" value="Limpiar"><i class="feather icon-x"></i>Limpiar</button>
+                                                    </div>
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon3">Clave</span>
+                                                    </div>
+                                                    <input class="form-control" type="math" name="clave" pattern="[A-Za-z]*" title="Solo letras, por favor." placeholder="Clave" value={{ clave }}></input>
+                                                </div>
+                                                </span>
+                                                <div class="form-group" >
+                                                    <label for="texto_cifrado">Texto Cifrado</label>
+                                                    <input class="form-control" name="texto_cifrado" id="texto_cifrado" pattern="[A-Za-z]*" title="Solo letras, por favor." placeholder="Texto Cifrado" value={{ texto_cifrado }}></input>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  CRIPTOANALISIS  -->
+                                <div class="tab-pane fade {% if 'criptoanalisis' in tab %} show active {% endif %}" id="criptoanalisis" role="tabpanel" aria-labelledby="criptoanalisis-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Criptoanálisis</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form action="/vigenere" method="post">
+                                                <div class="form-group" >
+                                                    <label for="texto_cifrado">Texto cifrado</label>
+                                                    <input class="form-control" name="texto_cifrado" id="texto_cifrado" pattern="[A-Za-z]*" title="Solo letras, por favor." placeholder="Texto Cifrado" value={{ texto_cifrado }}></input>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" name ="criptoanalisis" value="Criptoanalisis">Criptoanálisis</button>
+                                                </span>
+                                            </form>
+                                        </div>
+                                        <div class="card-header">
+                                            <h5>Frecuencias</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                <label>Caracteres</label>
+                                                <table class="table table-hover">
+                                                    {% if frequency %}
+                                                        {% for key, value in frequency.items() %}
+                                                            <tr>
+                                                                    <th> {{ key }} </th>
+                                                                    <td> {{ value }} </td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </table>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Bigramas</label>
+                                                    <table class="table table-hover">
+                                                        {% if bigrams %}
+                                                            {% for key, value in bigrams.items() %}
+                                                            <tr>
+                                                                    <th> {{ key }} </th>
+                                                                    <td> {{ value }} </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </table>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                    <label>Trigramas</label>
+                                                    <table class="table table-hover">
+                                                        {% if trigrams %}
+                                                            {% for key, value in trigrams.items() %}
+                                                            <tr>
+                                                                    <th> {{ key }} </th>
+                                                                    <td> {{ value }} </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  ATAQUE  -->
+                                <!--
+                                <div class="tab-pane fade {% if 'ataque' in tab %} show active {% endif %}" id="ataque" role="tabpanel" aria-labelledby="ataque-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Ataque</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form action="/affine" method="post">
+                                                <div class="form-group" >
+                                                    <label for="texto_cifrado">Texto cifrado</label>
+                                                    <input class="form-control" name="texto_cifrado" id="texto_cifrado" pattern="[A-Za-z]*" title="Solo letras, por favor." placeholder="Texto Cifrado" value={{ texto_cifrado }}></input>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" name ="ataque" value="Ataque">Ataque</button>
+                                                </span>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ Main Content ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+
+{% block javascripts %}{% endblock javascripts %}

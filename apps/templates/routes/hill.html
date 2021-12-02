@@ -1,0 +1,218 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Hill {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h1 class="m-b-10">Hill</h1>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item">Criptosistemas</a></li>
+                                <li class="breadcrumb-item">Clásicos</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">Hill</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <div class="col-sm-12">   
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase {% if 'cifrado' in tab %} active {% endif %}" id="cifrado-tab" data-toggle="tab" href="#cifrado" role="tab" aria-controls="cifrado" aria-selected="true">Cifrado</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase {% if 'criptoanalisis' in tab %} active {% endif %}" id="criptoanalisis-tab" data-toggle="tab" href="#criptoanalisis" role="tab" aria-controls="criptoanalisis" aria-selected="false">Criptoanálisis</a>
+                                </li>
+                                <!--
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase {% if 'ataque' in tab %} active {% endif %}" id="ataque-tab" data-toggle="tab" href="#ataque" role="tab" aria-controls="ataque" aria-selected="false">Ataque</a>
+                                </li>
+                                -->
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <!--  CIFRADO  -->
+                                <div class="tab-pane fade {% if 'primary' in tab %} show active {% endif %}" id="cifrado" role="tabpanel" aria-labelledby="cifrado-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Cifrado</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form action="/hill" method="post">
+                                                <div class="form-group" >
+                                                    <label for="texto_claro">Texto Claro</label>
+                                                    <input class="form-control" name="texto_claro" id="texto_claro" pattern="[A-Za-z]*" title="Solo letras, por favor." placeholder="Texto Claro" value={{ texto_claro }}></input>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="input-group mb-3">
+                                                            <div class=input-group-prepend>
+                                                                <button type="submit" class="btn btn-primary" name="cifrar" value="Cifrar"><i class="feather icon-arrow-down"></i>Cifrar</button>
+                                                                <button type="submit" class="btn btn-secondary" name="descifrar" value="Descifrar"><i class="feather icon-arrow-up"></i>Descifrar</button>
+                                                                <button type="submit" class="btn btn-outline-danger" name="limpiar" value="Limpiar"><i class="feather icon-x"></i>Limpiar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><input class="form-control" type="math" name="clave_00" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_00 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_01" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_01 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_02" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_02 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_03" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_03 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_04" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_04 }}></input></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><input class="form-control" type="math" name="clave_10" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_10 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_11" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_11 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_12" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_12 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_13" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_13 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_14" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_14 }}></input></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><input class="form-control" type="math" name="clave_20" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_20 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_21" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_21 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_22" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_22 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_23" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_23 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_24" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_24 }}></input></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><input class="form-control" type="math" name="clave_30" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_30 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_31" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_31 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_32" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_32 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_33" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_33 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_34" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_34 }}></input></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><input class="form-control" type="math" name="clave_40" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_40 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_41" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_41 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_42" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_42 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_43" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_43 }}></input></td>
+                                                                    <td><input class="form-control" type="math" name="clave_44" pattern="\b([0-9]|[1][0-9]|[2][0-5])\b" title="Solo un numero de 0 a 25, por favor." value={{ clave_44 }}></input></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                </span>
+                                                <div class="form-group" >
+                                                    <label for="texto_cifrado">Texto Cifrado</label>
+                                                    <input class="form-control" name="texto_cifrado" id="texto_cifrado" pattern="[A-Za-z]*" title="Solo letras, por favor." placeholder="Texto Cifrado" value={{ texto_cifrado }}></input>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  CRIPTOANALISIS  -->
+                                <div class="tab-pane fade {% if 'criptoanalisis' in tab %} show active {% endif %}" id="criptoanalisis" role="tabpanel" aria-labelledby="criptoanalisis-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Criptoanálisis</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form action="/hill" method="post">
+                                                <div class="form-group" >
+                                                    <label for="texto_cifrado">Texto cifrado</label>
+                                                    <input class="form-control" name="texto_cifrado" id="texto_cifrado" pattern="[A-Za-z]*" title="Solo letras, por favor." placeholder="Texto Cifrado" value={{ texto_cifrado }}></input>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" name ="criptoanalisis" value="Criptoanalisis">Criptoanálisis</button>
+                                                </span>
+                                            </form>
+                                        </div>
+                                        <div class="card-header">
+                                            <h5>Frecuencias</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                <label>Caracteres</label>
+                                                <table class="table table-hover">
+                                                    {% if frequency %}
+                                                        {% for key, value in frequency.items() %}
+                                                            <tr>
+                                                                    <th> {{ key }} </th>
+                                                                    <td> {{ value }} </td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </table>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Bigramas</label>
+                                                    <table class="table table-hover">
+                                                        {% if bigrams %}
+                                                            {% for key, value in bigrams.items() %}
+                                                            <tr>
+                                                                    <th> {{ key }} </th>
+                                                                    <td> {{ value }} </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </table>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                    <label>Trigramas</label>
+                                                    <table class="table table-hover">
+                                                        {% if trigrams %}
+                                                            {% for key, value in trigrams.items() %}
+                                                            <tr>
+                                                                    <th> {{ key }} </th>
+                                                                    <td> {{ value }} </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  ATAQUE  -->
+                                <!--
+                                <div class="tab-pane fade {% if 'ataque' in tab %} show active {% endif %}" id="ataque" role="tabpanel" aria-labelledby="ataque-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Ataque</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form action="/affine" method="post">
+                                                <div class="form-group" >
+                                                    <label for="texto_cifrado">Texto cifrado</label>
+                                                    <input class="form-control" name="texto_cifrado" id="texto_cifrado" pattern="[A-Za-z]*" title="Solo letras, por favor." placeholder="Texto Cifrado" value={{ texto_cifrado }}></input>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" name ="ataque" value="Ataque">Ataque</button>
+                                                </span>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+
+{% block javascripts %}{% endblock javascripts %}

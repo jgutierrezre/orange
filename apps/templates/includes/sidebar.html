@@ -1,0 +1,39 @@
+
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-brand header-logo">
+                <a target="_blank" class="b-brand">
+                    <div class="b-bg">
+                        <i class="feather icon-unlock"></i>
+                    </div>
+                    <span class="b-title">Orange</span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+            </div>
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Navegación</label>
+                    </li>
+                    <li data-username="dashboard" 
+                        class="nav-item {% if 'index' in segment %} active {% endif %}">
+                        <a href="/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Inicio</span></a>
+                    </li>
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Criptosistemas</label>
+                    </li>
+                    <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu {% if 'shift' in segment or 'substitution' in segment or'affine' in segment or 'vigenere' in segment or 'hill' in segment or 'permutation' in segment%} active {% endif %}">
+                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-unlock"></i></span><span class="pcoded-mtext">Clásicos</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="/shift.html" class="">Desplazamiento</a></li>
+                            <li class=""><a href="/substitution.html" class="">Sustitución</a></li>
+                            <li class=""><a href="/affine.html" class="">Affine</a></li>
+                            <li class=""><a href="/vigenere.html" class="">Vigenère</a></li>
+                            <li class=""><a href="/hill.html" class="">Hill</a></li>
+                            <li class=""><a href="/permutation.html" class="">Permutation</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
